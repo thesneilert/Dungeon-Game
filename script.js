@@ -1,7 +1,7 @@
 // ----- MODEL -----
 const appPicture = document.getElementById("appPicture")
 
-var currentRoom = [1,0]
+var currentRoom = [0,0]
 
 const map = [
     ["a1","a2","a3","a4"],
@@ -15,7 +15,7 @@ const map = [
 renderDungeonBg()
 function renderDungeonBg(){
     appPicture.innerHTML = /*html*/`
-    <img src="assets/dungeon/dungeon.png">
+    <img src="assets/dungeon/dungeon.png"/>
     `;
 }
 
@@ -23,36 +23,36 @@ function renderDungeonBg(){
 renderExit()
 function renderExit(){
     //north
-    if (map[currentRoom[0]-1][currentRoom[1]]!="" && currentRoom[0]>0){
+    if (currentRoom[0]>0 && map[currentRoom[0]-1][currentRoom[1]]!=""){
         appPicture.innerHTML += /*html*/`
-            <img class="north-exit" src="assets/dungeon/north.png">
+            <img class="north-exit" src="assets/dungeon/north.png"/>
             `;
     }
     else{
 
     }
     //south
-    if (map[currentRoom[0]+1][currentRoom[1]]!="" && currentRoom[0]<map.length){
+    if (currentRoom[0]<map.length -1 && map[currentRoom[0]+1][currentRoom[1]]!=""){
         appPicture.innerHTML += /*html*/`
-        <img class="south-exit" src="assets/dungeon/south.png">
+        <img class="south-exit" src="assets/dungeon/south.png"/>
         `;
     }
     else{
 
     }
     //west
-    if (map[currentRoom[0]][currentRoom[1]-1]!=""){
+    if (currentRoom[1]>0 && map[currentRoom[0]][currentRoom[1]-1]!=""){
         appPicture.innerHTML += /*html*/`
-        <img class="west-exit" src="assets/dungeon/west.png">
+        <img class="west-exit" src="assets/dungeon/west.png"/>
         `;
     }
     else{
 
     }
     //east
-    if (map[currentRoom[0]][currentRoom[1]+1]!=""){
+    if (currentRoom[1]<map[currentRoom[0]].length -1 && map[currentRoom[0]][currentRoom[1]+1]!=""){
         appPicture.innerHTML += /*html*/`
-        <img class="east-exit" src="assets/dungeon/east.png">
+        <img class="east-exit" src="assets/dungeon/east.png"/>
         `;
     }
     else{
