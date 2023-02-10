@@ -84,3 +84,46 @@ button:hover {
     top: 184px;
     left: 473px;
 }
+
+/*------------- EXITS BUTTONS -------------*/
+.north-button {
+    position: absolute;
+    top: -480px;
+    left: 220px;
+    animation: fadeInOutBtn 1s ease-in-out forwards;
+  }
+
+  .south-button {
+    position: absolute;
+    top: -60px;
+    left: 220px;
+    animation: fadeInOutBtn 1s ease-in-out forwards;
+  }
+
+  .west-button {
+    position: absolute;
+    top: -258px;
+    left: 20px;
+    animation: fadeInOutBtn 1s ease-in-out forwards;
+  }
+
+  .east-button {
+    position: absolute;
+    top: -60px;
+    left: 220px;
+    animation: fadeInOutBtn 1s ease-in-out forwards;
+  }
+  
+  /*
+North   top: -480px;
+        left: 220px;
+
+South   top: -60px;
+        left: 220px;
+
+West    top: -258px;
+        left: 20px;
+
+East    top: -60px;
+        left: 220px;
+*/
