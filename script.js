@@ -11,7 +11,7 @@ var currentRoom = [0,0]; //[up-down,right-left]
 var currentExitAmount = 0;
 var currentRoomName = map[currentRoom[0]][currentRoom[1]];
 var currentGoldAmount = 0;
-var currentHealthAmount = 0;
+var currentHealthAmount = 100;
 
 
 
@@ -36,9 +36,7 @@ function renderExit(){
             currentExitAmount ++;
     }
     else{
-        appPicture.innerHTML += /*html*/`
-            <img class="north-exit" src="assets/dungeon/north.png"/>
-            `;
+
     }
     //south
     if (currentRoom[0]<map.length -1 && map[currentRoom[0]+1][currentRoom[1]]!=""){
@@ -90,10 +88,8 @@ if (currentGoldAmount >= 0 && currentGoldAmount < 10) {
 }
 
 if (currentHealthAmount >= 0 && currentHealthAmount < 10) {
-    currentHealthAmount = "000" + currentHealthAmount;
-} else if (currentHealthAmount >= 10 && currentHealthAmount < 100) {
     currentHealthAmount = "00" + currentHealthAmount;
-} else if (currentHealthAmount >= 100 && currentHealthAmount < 1000) {
+} else if (currentHealthAmount >= 10 && currentHealthAmount < 100) {
     currentHealthAmount = "0" + currentHealthAmount;
 }
 
