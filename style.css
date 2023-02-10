@@ -38,7 +38,7 @@ button:hover {
   transform: translate(-50%, -0%);
 }
 
-.pictureFrame {
+.pictureBox {
   background-color: rgba(255, 255, 255, 0.02);
   width: 500px;
   height: 480px;
@@ -46,75 +46,129 @@ button:hover {
   box-shadow: 0px 6px 19px -4px rgba(0, 0, 0, 0.75);
 }
 
-.roomText {
+.textBox {
   background-color: rgba(255, 255, 255, 0.02);
-  width: 500px;
+  width: 380px;
   height: 100px;
   border-radius: 4px;
   box-shadow: 0px 6px 19px -4px rgba(0, 0, 0, 0.75);
   position: relative;
-  left: 50%;
+  left: 38%;
   transform: translate(-50%, 20%);
+}
+
+.statsBox {
+    background-color: rgba(255, 255, 255, 0.02);
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    box-shadow: 0px 6px 19px -4px rgba(0, 0, 0, 0.75);
+    position: relative;
+    left: 90%;
+    transform: translate(-50%, -80%);
+  }
+
+
+
+/*------------- SCRIPT HTML -------------*/
+#appText {
+  padding-top: 11px;
+  padding-left: 22px;
+}
+
+#appStats {
+  padding-top: 10px;
+  padding-left: 12px;
+}
+
+
+
+/*------------- STATS MENU -------------*/
+.stats-container {
+  position: relative;
+}
+
+.text-stats-gold{
+  font-size: 15px;
+  position: absolute;
+  top: -0px;
+  left: 22px;
+}
+.text-stats-health{
+  font-size: 15px;
+  position: absolute;
+  top: 12px;
+  left: 22px;
+}
+
+.gold-coin-stats {
+  padding-top: 0px;
+}
+
+.health-stats{
+  padding-top: 15px;
 }
 
 
 
 /*------------- EXITS -------------*/
 
-.north-exit{
-    position: absolute;
-    top: 20px;
-    left: 212px;
+.north-exit {
+  position: absolute;
+  top: 20px;
+  left: 212px;
 }
 
-.south-exit{
-    position: absolute;
-    top: 463px;
-    left: 211px;
+.south-exit {
+  position: absolute;
+  top: 463px;
+  left: 211px;
 }
 
-.west-exit{
-    position: absolute;
-    top: 184px;
-    left: 20px;
+.west-exit {
+  position: absolute;
+  top: 184px;
+  left: 20px;
 }
 
-.east-exit{
-    position: absolute;
-    top: 184px;
-    left: 473px;
+.east-exit {
+  position: absolute;
+  top: 184px;
+  left: 473px;
 }
+
+
 
 /*------------- EXITS BUTTONS -------------*/
 .north-button {
-    position: absolute;
-    top: -480px;
-    left: 220px;
-    animation: fadeInOutBtn 1s ease-in-out forwards;
-  }
+  position: absolute;
+  top: -480px;
+  left: 220px;
+  animation: fadeInOutBtn 1s ease-in-out forwards;
+}
 
-  .south-button {
-    position: absolute;
-    top: -60px;
-    left: 220px;
-    animation: fadeInOutBtn 1s ease-in-out forwards;
-  }
+.south-button {
+  position: absolute;
+  top: -60px;
+  left: 220px;
+  animation: fadeInOutBtn 1s ease-in-out forwards;
+}
 
-  .west-button {
-    position: absolute;
-    top: -258px;
-    left: 20px;
-    animation: fadeInOutBtn 1s ease-in-out forwards;
-  }
+.west-button {
+  position: absolute;
+  top: -258px;
+  left: 20px;
+  animation: fadeInOutBtn 1s ease-in-out forwards;
+}
 
-  .east-button {
-    position: absolute;
-    top: -60px;
-    left: 220px;
-    animation: fadeInOutBtn 1s ease-in-out forwards;
-  }
-  
-  /*
+.east-button {
+  position: absolute;
+  top: -60px;
+  left: 220px;
+  animation: fadeInOutBtn 1s ease-in-out forwards;
+}
+
+/*
 North   top: -480px;
         left: 220px;
 
