@@ -24,6 +24,15 @@ function renderDungeonBg(){
     `;
 }
 
+//use this to see what room your in to debug
+showDebugWindow()
+function showDebugWindow(){
+    appDebug.innerHTML += /*html*/`
+    You are in room ${currentRoomName}. <br>
+    The room map array is ${currentRoom}.
+    <p style="font-size: 12px; color:#569459;">This window is intended for debugging <br>and is not a part of the final product.</p>
+    `;
+}
 
 //rendering the exits
 renderExit()
@@ -73,7 +82,7 @@ function renderExit(){
 renderText()
 function renderText(){
     appText.innerHTML += /*html*/`
-    You are in room ${currentRoomName}. <br>The room has ${currentExitAmount} exits. <br>Choose one to proceed.
+    You have entered a new dungeon room. <br>The room has ${currentExitAmount} exits. Choose one to proceed.
         `;
 }
 
