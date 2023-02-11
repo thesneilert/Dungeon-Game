@@ -1,15 +1,16 @@
 // ----- MODEL -----
 const appPicture = document.getElementById("appPicture")
+const grid = document.getElementById("grid");
 
 const map = [    
     ["A1","A2","A3","A4"],
     ["B1", "" ,"B3", "" ],
     ["C1","C2","C3", "" ]
 ];
-
 var currentRoom = [0,0]; //[up-down,right-left]
-var currentExitAmount = 0;
 var currentRoomName = map[currentRoom[0]][currentRoom[1]];
+var currentExitAmount = 0;
+var characterPosition = [11,0]; //[up-down,right-left]  (RN:371,0  LN:11,0  RS:371,300  LS:11,300)
 var currentGoldAmount = 0;
 var currentHealthAmount = 100;
 
@@ -24,15 +25,7 @@ function renderDungeonBg(){
     `;
 }
 
-//use this to see what room your in to debug
-showDebugWindow()
-function showDebugWindow(){
-    appDebug.innerHTML += /*html*/`
-    You are in room ${currentRoomName}. <br>
-    The room map array is ${currentRoom}.
-    <p style="font-size: 12px; color:#569459;">This window is intended for debugging <br>and is not a part of the final product.</p>
-    `;
-}
+
 
 //rendering the exits
 renderExit()
@@ -86,6 +79,14 @@ function renderText(){
         `;
 }
 
+renderCharacter()
+function renderCharacter(){
+    grid.innerHTML += /*html*/`
+    <img id="character" src="assets/character/character_south.png"/>
+        `;
+}
+
+
 
 //always show 4 digits in statsmenu (0001, 0011, 0111, 1111)
 if (currentGoldAmount >= 0 && currentGoldAmount < 10) {
@@ -121,3 +122,44 @@ function renderStats(){
 
 
 // ----- CONTROLLER -----
+characterController()
+function characterController() {
+    document.getElementById("character").style.position = "absolute";
+    document.getElementById("character").style.top = characterPosition[1] + "px";
+    document.getElementById("character").style.left = characterPosition[0] + "px";
+  
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowDown") {
+        characterPosition[1] += 15;
+        showDebugWindow()
+      } if (event.key === "ArrowUp") {
+        characterPosition[1] -= 15;
+        showDebugWindow()
+      } if (event.key === "ArrowLeft") {
+        characterPosition[0] -= 15;
+        showDebugWindow()
+      } if (event.key === "ArrowRight") {
+        characterPosition[0] += 15;
+        showDebugWindow()
+      }
+  
+      document.getElementById("character").style.top = characterPosition[1] + "px";
+      document.getElementById("character").style.left = characterPosition[0] + "px";
+    });
+  }
+  
+
+
+
+// ----- DEBUG -----
+//use this to see what room your in to debug
+showDebugWindow()
+function showDebugWindow(){
+    appDebug.innerHTML = /*html*/`
+    You are in room ${currentRoomName}. <br>
+    The room map array is ${currentRoom}.<br>
+    The room has ${currentExitAmount} exits.<br>
+    The character postion is ${characterPosition}.<br>
+    <p style="font-size: 12px; color:#569459;">This window is intended for debugging <br>and is not a part of the final product.</p>
+    `;
+}
