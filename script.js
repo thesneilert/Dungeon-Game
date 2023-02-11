@@ -1,4 +1,4 @@
-// ----- MODEL -----
+// -------------- MODEL ---------------------------------------------------------------------------------------------------
 const appPicture = document.getElementById("appPicture")
 const grid = document.getElementById("grid");
 
@@ -7,8 +7,11 @@ const map = [
     ["B1", "" ,"B3", "" ],
     ["C1","C2","C3", "" ]
 ];
+
 var currentRoom = [0,0]; //[up-down,right-left]
 var currentRoomName = map[currentRoom[0]][currentRoom[1]];
+var currentExitArray = [/*N*/false,/*S*/false,/*W*/false,/*E*/false]; //checks for exits
+var exitArray = ['north', 'south', 'west', 'east'] //name the exitName
 var currentExitAmount = 0;
 var characterPosition = [11,0]; //[up-down,right-left]  (RN:371,0  LN:11,0  RS:371,300  LS:11,300)
 var currentGoldAmount = 0;
@@ -16,62 +19,60 @@ var currentHealthAmount = 100;
 
 
 
-// ----- VIEW -----
+// -------------- VIEW ------------------------------------------------------------------------------------------------------
 //rendering the background
-renderDungeonBg()
-function renderDungeonBg(){
+checkForExit()
+renderDungeon()
+function renderDungeon(){
     appPicture.innerHTML = /*html*/`
     <img src="assets/dungeon/dungeon.png"/>
     `;
+    for (let i = 0; i < currentExitArray.length; i++){
+        if (currentExitArray[i] == true){
+            let exitName = exitArray[i];
+            appPicture.innerHTML += /*html*/`
+            <img class="${exitName}-exit" src="assets/dungeon/${exitName}.png"/>
+            `;
+        }
+    }
 }
-
-
-
-//rendering the exits
-renderExit()
-function renderExit(){
+//check what exits is available
+function checkForExit(){
     //north
     if (currentRoom[0]>0 && map[currentRoom[0]-1][currentRoom[1]]!=""){
-        appPicture.innerHTML += /*html*/`
-            <img class="north-exit" src="assets/dungeon/north.png"/>
-            `;
-            currentExitAmount ++;
+        currentExitArray[0] = true
+        currentExitAmount ++;
     }
     else{
-
+        currentExitArray[0] = false
     }
     //south
     if (currentRoom[0]<map.length -1 && map[currentRoom[0]+1][currentRoom[1]]!=""){
-        appPicture.innerHTML += /*html*/`
-        <img class="south-exit" src="assets/dungeon/south.png"/>
-        `;
+        currentExitArray[1] = true
         currentExitAmount ++;
     }
     else{
-
+        currentExitArray[1] = false
     }
     //west
     if (currentRoom[1]>0 && map[currentRoom[0]][currentRoom[1]-1]!=""){
-        appPicture.innerHTML += /*html*/`
-        <img class="west-exit" src="assets/dungeon/west.png"/>
-        `;
+        currentExitArray[2] = true
         currentExitAmount ++;
     }
     else{
-
+        currentExitArray[2] = false
     }
     //east
     if (currentRoom[1]<map[currentRoom[0]].length -1 && map[currentRoom[0]][currentRoom[1]+1]!=""){
-        appPicture.innerHTML += /*html*/`
-        <img class="east-exit" src="assets/dungeon/east.png"/>
-        `;
+        currentExitArray[3] = true
         currentExitAmount ++;
     }
     else{
-
+        currentExitArray[3] = false
     }
 }
 
+//render the text in appText
 renderText()
 function renderText(){
     appText.innerHTML += /*html*/`
@@ -79,14 +80,13 @@ function renderText(){
         `;
 }
 
+//render the character asset "character_south.png"
 renderCharacter()
 function renderCharacter(){
     grid.innerHTML += /*html*/`
     <img id="character" src="assets/character/character_south.png"/>
         `;
 }
-
-
 
 //always show 4 digits in statsmenu (0001, 0011, 0111, 1111)
 if (currentGoldAmount >= 0 && currentGoldAmount < 10) {
@@ -103,6 +103,7 @@ if (currentHealthAmount >= 0 && currentHealthAmount < 10) {
     currentHealthAmount = "0" + currentHealthAmount;
 }
 
+//render stats in appStats
 renderStats()
 function renderStats(){
     appStats.innerHTML += /*html*/`
@@ -121,10 +122,10 @@ function renderStats(){
 
 
 
-// ----- CONTROLLER -----
+// -------------- CONTROLLER ---------------------------------------------------------------------------------------------------
+//Controller for moving the character with keyboard arrowkeys
 characterController()
 function characterController() {
-    document.getElementById("character").style.position = "absolute";
     document.getElementById("character").style.top = characterPosition[1] + "px";
     document.getElementById("character").style.left = characterPosition[0] + "px";
   
@@ -151,9 +152,9 @@ function characterController() {
 
 
 
-// ----- DEBUG -----
+// -------------- DEBUG -------------------------------------------------------------------------------------------------------
 //use this to see what room your in to debug
-showDebugWindow()
+showDebugWindow() //turn this on or off to view debug window
 function showDebugWindow(){
     appDebug.innerHTML = /*html*/`
     You are in room ${currentRoomName}. <br>

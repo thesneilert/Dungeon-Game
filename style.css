@@ -77,10 +77,11 @@ button:hover {
   margin-left: 44px;
   width: 410px; 
   height: 383px; 
-  /*border: 1px solid rgb(255, 0, 0);*/
+  border: 1px solid rgb(255, 0, 0);
 }
 
 #character{
+  position: absolute;
   width: 7%;
 }
 
@@ -101,7 +102,7 @@ button:hover {
 #debugBox{
   position: absolute;
   padding: 20px;
-  margin-top: 602px;
+  margin-top: 595px;
   margin-left: 140px; /*change this if its offset from windowBox*/
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 4px;
